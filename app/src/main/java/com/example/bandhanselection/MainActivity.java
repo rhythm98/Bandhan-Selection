@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
+
+import android.view.View;
 import android.widget.Toast;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -33,76 +35,86 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Rajaji", "onClick: 123456789");
+                Toast.makeText(getApplicationContext(),"Mujhe maaf karna",Toast.LENGTH_SHORT).show();
+            }
+        });
         actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open_nav_desc,R.string.close_nav_desc);
         drawer.addDrawerListener(actionBarDrawerToggle);
     navigationView.setNavigationItemSelectedListener(this);
-
-//        navigationView.setNavigationItemSelectedListener(onNavigationItemSelected());
-        //          Bottom Navigation
-//        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//                when (item.itemId) {
-//            R.id.item1 -> {
-//                // Respond to navigation item 1 click
-//                true
-//            }
-//            R.id.item2 -> {
-//                // Respond to navigation item 2 click
-//                true
-//            }
-//        else -> false
-//        }
-//        }
-//        bottomNavigation.setOnNavigationItemReselectedListener { item ->
-//                when(item.itemId) {
-//            R.id.item1 -> {
-//                // Respond to navigation item 1 reselection
-//            }
-//            R.id.item2 -> {
-//                // Respond to navigation item 2 reselection
-//            }
-//        }
-//        }
-
-
-//      AppBar:Top
-//        topAppBar.setNavigationOnClickListener {
-//            // Handle navigation icon press
-//        }
-//
-//        topAppBar.setOnMenuItemClickListener { menuItem ->
-//                when (menuItem.itemId) {
-//            R.id.favorite -> {
-//                // Handle favorite icon press
-//                true
-//            }
-//            R.id.search -> {
-//                // Handle search icon press
-//                true
-//            }
-//            R.id.more -> {
-//                // Handle more item (inside overflow menu) press
-//                true
-//            }
-//        else -> false
-//        }
-//        }
-
-
-//        Handle Navigation Drawer -> setNavigationItemSelectedListener to listen to item selection and implement your navigation logic.
-//        https://material.io/develop/android/components/navigation-view
-//        Header views
-//        You can only add one header in the XML layout, but you can add multiple header views programmatically with addHeaderView(View)
-//        (even if you already added one in the XML layout). You can use getHeaderView(int) to get any of the header views at runtime.
-
-//        If you need to access the header view you added in the XML layout, that will always be the first header view,
-//        so you can get it with getHeaderView(0).
-
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
+
+/*
+        navigationView.setNavigationItemSelectedListener(onNavigationItemSelected());
+                  Bottom Navigation
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+            R.id.item1 -> {
+                // Respond to navigation item 1 click
+                true
+            }
+            R.id.item2 -> {
+                // Respond to navigation item 2 click
+                true
+            }
+        else -> false
+        }
+        }
+        bottomNavigation.setOnNavigationItemReselectedListener { item ->
+                when(item.itemId) {
+            R.id.item1 -> {
+                // Respond to navigation item 1 reselection
+            }
+            R.id.item2 -> {
+                // Respond to navigation item 2 reselection
+            }
+        }
+        }
+
+
+      AppBar:Top
+        topAppBar.setNavigationOnClickListener {
+            // Handle navigation icon press
+        }
+
+        topAppBar.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+            R.id.favorite -> {
+                // Handle favorite icon press
+                true
+            }
+            R.id.search -> {
+                // Handle search icon press
+                true
+            }
+            R.id.more -> {
+                // Handle more item (inside overflow menu) press
+                true
+            }
+        else -> false
+        }
+        }
+
+
+        Handle Navigation Drawer -> setNavigationItemSelectedListener to listen to item selection and implement your navigation logic.
+        https://material.io/develop/android/components/navigation-view
+        Header views
+        You can only add one header in the XML layout, but you can add multiple header views programmatically with addHeaderView(View)
+        (even if you already added one in the XML layout). You can use getHeaderView(int) to get any of the header views at runtime.
+
+        If you need to access the header view you added in the XML layout, that will always be the first header view,
+        so you can get it with getHeaderView(0).
+
+
+    */
     }
 
 
@@ -123,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                 drawer.closeDrawers();
                 return true;
-
             case R.id.nav_gallery:
                 Toast.makeText(getApplicationContext(), "Gallery", Toast.LENGTH_SHORT).show();
                 drawer.closeDrawers();
