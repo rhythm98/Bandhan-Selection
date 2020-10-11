@@ -3,4 +3,6 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="close_nav_desc">Close NavBar</string>
+    <string name="open_nav_desc">Open NavBar</string>
 </resources>

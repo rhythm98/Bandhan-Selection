@@ -32,9 +32,6 @@ public class homeFragment extends Fragment {
         ImageView[] imageViews={
                 (ImageView)root.findViewById(R.id.card1),(ImageView)root.findViewById(R.id.card2),(ImageView)root.findViewById(R.id.card3),(ImageView)root.findViewById(R.id.card4),(ImageView)root.findViewById(R.id.card5)
         };
-        for(int i=0;i<5;i++){
-            Log.d("Ajit Singh", "onCreate: "+imageViews[i]);
-        }
 
         Glide.with(this).load(urls[0]).into(imageViews[0]);
         Glide.with(this).load(urls[1]).into(imageViews[1]);
