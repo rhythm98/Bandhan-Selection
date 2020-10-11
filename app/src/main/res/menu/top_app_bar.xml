@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="favorite"
+        android:contentDescription="description_favorite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_image_search_24"
+        android:title="image_search"
+        android:contentDescription="description_image_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/more"
+        android:title="Log out PLZ"
+        android:contentDescription="description_LogOut"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/more1"
+        android:title="Fkc Off"
+        android:contentDescription="description_LogOut"
+        app:showAsAction="never" />
+
+</menu>
