@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {return true;}
         Log.d("id batao", "onOptionsItemSelected: "+item.getItemId());
         Toast.makeText(getApplicationContext(),"ID: "+item.getItemId(),Toast.LENGTH_LONG).show();
         switch (item.getItemId())
