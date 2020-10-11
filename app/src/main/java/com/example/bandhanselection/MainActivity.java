@@ -1,11 +1,13 @@
 package com.example.bandhanselection;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
@@ -16,9 +18,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import androidx.appcompat.widget.Toolbar;
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     private DrawerLayout drawer;
-
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private AppBarConfiguration appBarConfiguration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open_nav_desc,R.string.close_nav_desc);
+        actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open_nav_desc,R.string.close_nav_desc);
         drawer.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+    navigationView.setNavigationItemSelectedListener(this);
 
 //        navigationView.setNavigationItemSelectedListener(onNavigationItemSelected());
         //          Bottom Navigation
@@ -96,42 +99,49 @@ public class MainActivity extends AppCompatActivity {
 
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).build();
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
     }
 
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        return NavigationUI.navigateUp(navController, appBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        Log.d("ajit", "onSupportNavigateUp: ");
+        Toast.makeText(getApplicationContext(), "Helllo Motherfucker", Toast.LENGTH_SHORT).show();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//        switch (item.getItemId()){
-//            case R.id.nav_home:
-//                Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
-//                drawer.closeDrawers();
-//                return true;
-//
-//            case R.id.nav_gallery:
-//                Toast.makeText(getApplicationContext(),"Gallery",Toast.LENGTH_SHORT).show();
-//                drawer.closeDrawers();
-//                return true;
-//
-//            case R.id.nav_slideshow:
-//                Toast.makeText(getApplicationContext(),"Slideshow",Toast.LENGTH_SHORT).show();
-//                drawer.closeDrawers();
-//                return true;
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+                drawer.closeDrawers();
+                return true;
+
+            case R.id.nav_gallery:
+                Toast.makeText(getApplicationContext(), "Gallery", Toast.LENGTH_SHORT).show();
+                drawer.closeDrawers();
+                return true;
+
+            case R.id.nav_slideshow:
+                Toast.makeText(getApplicationContext(), "Slideshow", Toast.LENGTH_SHORT).show();
+                drawer.closeDrawers();
+                return true;
+        }
+        return true;
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        actionBarDrawerToggle.syncState();
+    }
 
     @Override
     public void onBackPressed() {
@@ -144,12 +154,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_app_bar,menu);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.d("id batao", "onOptionsItemSelected: "+item.getItemId());
+        Toast.makeText(getApplicationContext(),"ID: "+item.getItemId(),Toast.LENGTH_LONG).show();
         switch (item.getItemId())
         {
             case R.id.favorite:
@@ -168,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//
+//    }
 
 }
