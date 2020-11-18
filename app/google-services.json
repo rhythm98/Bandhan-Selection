@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "740552140852",
+    "firebase_url": "https://bandhan-selection1.firebaseio.com",
+    "project_id": "bandhan-selection1",
+    "storage_bucket": "bandhan-selection1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740552140852:android:163628a5c96f0b082dc261",
+        "android_client_info": {
+          "package_name": "com.example.bandhanselection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740552140852-e1v9j1t8srvf86q5g4ffnjfk7ob6tcj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bandhanselection",
+            "certificate_hash": "6d764d398046dd6e3c33cfe4588ca939121212eb"
+          }
+        },
+        {
+          "client_id": "740552140852-kfdpfkhsf304fbh96trav9t5ddv8fqsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATf-cTBEX_940CS3aaprou9pysaN4OAUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740552140852-kfdpfkhsf304fbh96trav9t5ddv8fqsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
